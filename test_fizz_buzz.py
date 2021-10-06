@@ -1,6 +1,8 @@
+import io
 import unittest
+import unittest.mock
 
-from fizzbuzz import fizz_buzz_output
+from fizzbuzz import fizz_buzz_output, fizz_buzz_print_list
 
 
 class TestFizzBuzzOutput(unittest.TestCase):
@@ -14,7 +16,7 @@ class TestFizzBuzzOutput(unittest.TestCase):
         # When not divisible by three or five then Not Fizz is returned.
         result = fizz_buzz_output(8)
 
-        self.assertEqual(result, "Not Fizz")
+        self.assertEqual(result, "")
     
     def test_divisible_by_five(self):
         # When divisible by five then Buzz is returned.
@@ -28,6 +30,18 @@ class TestFizzBuzzOutput(unittest.TestCase):
 
         self.assertEqual(result, "FizzBuzz")
 
+
+class TestFizzBuzzListPrint(unittest.TestCase):
+
+    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
+    def test_list_output(self, mock_stdout):
+        # When given a list of numbers it outputs for each number.
+        number_list = [1, 3, 8, 10, 15]
+        expected_output = "1 \n3 Fizz\n8 \n10 Buzz\n15 FizzBuzz\n"
+        
+        fizz_buzz_print_list(number_list)
+
+        self.assertEqual(mock_stdout.getvalue(), expected_output) 
 
 if __name__ == '__main__':
     unittest.main()
