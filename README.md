@@ -1,6 +1,22 @@
 # fizz-buzz-practice
 
-This is the repo for a practice challenge that is below:
+This is the repo for a practice challenge that is below.
+
+To run the unit tests:
+
+`python -m unittest test_fizz_buzz`
+
+To use the module:
+
+`from fizzbuzz import fizz_buzz_output, fizz_buzz_print_list`
+
+For individual numbers:
+
+`fizz_buzz_output`
+
+For a printed list of numbers:
+
+`fizz_buzz_print_list`
 
 ---
 ## FizzBuzz
